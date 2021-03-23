@@ -21,7 +21,7 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
 
   return (
     <div className="row">
-      <h3>{title}</h3>
+      <h3 style={{ marginLeft: "20px" }}>{title}</h3>
       <div className="row__posters">
         {movies.map((movie) => {
           return (
