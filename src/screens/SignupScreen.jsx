@@ -1,18 +1,16 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { auth } from "../firebase";
 import "./SignupScreen.css";
 
-const SignupScreen = () => {
-  const emailRef = useRef(null);
+const SignupScreen = (props) => {
+  const [email, setEmail] = useState(props.email ? props.email : null);
+
   const passwordRef = useRef(null);
 
   const register = (e) => {
     e.preventDefault();
     auth
-      .createUserWithEmailAndPassword(
-        emailRef.current.value,
-        passwordRef.current.value
-      )
+      .createUserWithEmailAndPassword(email, passwordRef.current.value)
       .then((authUser) => {
         console.log(authUser);
       })
@@ -24,10 +22,7 @@ const SignupScreen = () => {
   const signIn = (e) => {
     e.preventDefault();
     auth
-      .signInWithEmailAndPassword(
-        emailRef.current.value,
-        passwordRef.current.value
-      )
+      .signInWithEmailAndPassword(email, passwordRef.current.value)
       .then((authUser) => {
         console.log(authUser);
       })
@@ -40,7 +35,12 @@ const SignupScreen = () => {
     <div className="signupScreen">
       <form>
         <h1>Sign In</h1>
-        <input ref={emailRef} placeholder="Email" type="email" />
+        <input
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+          placeholder="Email"
+          type="email"
+        />
         <input ref={passwordRef} placeholder="Password" type="password" />
         <button type="submit" onClick={signIn}>
           Sign In
