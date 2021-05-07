@@ -1,11 +1,14 @@
 import React, { useRef, useState } from "react";
 import { auth } from "../firebase";
 import "./SignupScreen.css";
+import { userlogin } from "../actions/userActions";
+import { useDispatch } from "react-redux";
 
 const SignupScreen = (props) => {
-  const [email, setEmail] = useState(props.email ? props.email : null);
-
+  const [email, setEmail] = useState(props.email ? props.email : "");
   const passwordRef = useRef(null);
+
+  const dispatch = useDispatch();
 
   const register = (e) => {
     e.preventDefault();
@@ -21,14 +24,7 @@ const SignupScreen = (props) => {
 
   const signIn = (e) => {
     e.preventDefault();
-    auth
-      .signInWithEmailAndPassword(email, passwordRef.current.value)
-      .then((authUser) => {
-        console.log(authUser);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
+    dispatch(userlogin(email, passwordRef.current.value));
   };
 
   return (

@@ -30,11 +30,13 @@
   flex: 1;
 }
 
-.profileScreen__details > h2 {
+.email-box {
   background-color: gray;
-  padding: 15px;
-  font-size: 15px;
-  padding-left: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .profileScreen__signOut {
@@ -60,4 +62,40 @@
 
 .profileScreen__info > img {
   height: 100px;
+}
+
+.profileScreen-password-confirmation {
+  overflow: hidden;
+  transition: all 1s ease-in-out;
+  padding: 10px 20px;
+  background-color: gray;
+  font-size: 1rem;
+  color: white;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+
+.alert {
+  width: 100%;
+  padding: 15px 20px;
+  background-color: #e50914;
+  color: white;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
 }
